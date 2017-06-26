@@ -1,0 +1,42 @@
+<!--<script>-->
+
+    <!--console.log(res)-->
+<!--</script>-->
+<!DOCTYPE html>
+<html>
+<head>
+    <body>
+           <script src="/socket.io/socket.io.js"></script>
+       <script>
+           var socket = io();
+           socket.on('connect',function () {
+               console.log('Connected to server')
+               socket.on('newScore',function (score) {
+                  generateComment(score.res)
+               })
+
+           })
+           socket.on('disconnect',function () {
+               console.log('Server disconnected')
+           })
+function generateComment(score) {
+    switch(score)
+    {
+        case 1 : alert("Just a single run.It was a good ball")
+                 break;
+        case 2 : alert("Batsmen run for two. Fielder does well getting quick to the ball")
+                 break;
+        case 3 : alert("Three runs. Misfield is going to cost this team")
+            break;
+        case 4 : alert("Long Drive and Four!")
+            break;
+        case 6 : alert("Clean as a whistle. Six runs!")
+            break;
+        default: break;
+    }
+}
+
+       </script>
+</body>
+</head>
+</html>
